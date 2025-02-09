@@ -37,9 +37,9 @@ function init() {
   ctx.fillRect(0, 0, width, height);
 
   function drawText() {
-    const fontSize = Math.min(40, width / 10); // Уменьшен размер шрифта
+    const fontSize = Math.min(60, width / 10);
     ctx.font = `${fontSize}px Arial`;
-    ctx.fillStyle = "lightpink"; // Изменен цвет на светло-розовый
+    ctx.fillStyle = "lightblue";
     ctx.textAlign = "center";
     ctx.fillText("I love you", width / 2, height / 2 + (mobile ? 100 : 200));
   }
@@ -69,13 +69,14 @@ function init() {
 
   var traceCount = mobile ? 10 : 50;
   var pointsOrigin = [];
-  var dr = mobile ? 0.5 : 0.2; // Увеличено значение dr для уменьшения количества линий
+  var dr = mobile ? 0.5 : 0.1;
 
-  // Уменьшенные размеры и уменьшенное количество линий
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150 * koef, 7 * koef, 0, 0)); // Уменьшено
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 310 * koef, 19 * koef, 0, 0));
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 110 * koef, 5 * koef, 0, 0)); // Уменьшено
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 250 * koef, 15 * koef, 0, 0));
+  for (var i = 0; i < Math.PI * 2; i += dr)
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 190 * koef, 11 * koef, 0, 0));
 
   var heartPointsCount = pointsOrigin.length;
   var targetPoints = [];
