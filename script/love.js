@@ -37,11 +37,11 @@ function init() {
   ctx.fillRect(0, 0, width, height);
 
   function drawText() {
-    const fontSize = Math.min(60, width / 10);
+    const fontSize = Math.min(50, width / 10); // Уменьшен размер шрифта
     ctx.font = `${fontSize}px Arial`;
-    ctx.fillStyle = "lightblue";
+    ctx.fillStyle = "lightpink"; // Изменен цвет на светло-розовый
     ctx.textAlign = "center";
-    ctx.fillText("I love you", width / 2, height / 2 + (mobile ? 100 : 200));
+    ctx.fillText("I love you", width / 2, height / 2 + (mobile ? 70 : 140)); // Уменьшен отступ
   }
 
   function heartPosition(rad) {
@@ -69,14 +69,13 @@ function init() {
 
   var traceCount = mobile ? 10 : 50;
   var pointsOrigin = [];
-  var dr = mobile ? 0.5 : 0.1;
+  var dr = mobile ? 0.2 : 0.05; // Уменьшено значение dr для увеличения количества линий
 
+  // Уменьшенные размеры для экрана телефона
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 310 * koef, 19 * koef, 0, 0));
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150 * koef, 7 * koef, 0, 0)); // Уменьшено
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 250 * koef, 15 * koef, 0, 0));
-  for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 190 * koef, 11 * koef, 0, 0));
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 110 * koef, 5 * koef, 0, 0)); // Уменьшено
 
   var heartPointsCount = pointsOrigin.length;
   var targetPoints = [];
