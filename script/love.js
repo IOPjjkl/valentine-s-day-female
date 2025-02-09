@@ -33,7 +33,7 @@ function init() {
   var height = (canvas.height = koef * innerHeight);
   var rand = Math.random;
 
-  ctx.fillStyle = "rgba(0,0,0,1)";
+  ctx.fillStyle = "rgba(191, 188, 182, 1)";
   ctx.fillRect(0, 0, width, height);
 
   function drawText() {
@@ -102,7 +102,7 @@ function init() {
       q: ~~(rand() * heartPointsCount),
       D: 2 * (i % 2) - 1,
       force: 0.2 * rand() + 0.7,
-      f: "rgba(51, 204, 255, 0.7)",
+      f: "rgba(251, 94, 175, 0.8)",
       trace: Array.from({ length: traceCount }, () => ({ x, y })),
     };
   }
@@ -162,23 +162,12 @@ function init() {
 
 function continueMusic() {
   const music = document.getElementById("backgroundMusic");
-  const isMusicPlaying = localStorage.getItem("musicPlaying") === "true";
   const musicCurrentTime = localStorage.getItem("musicCurrentTime") || 0;
 
   if (music) {
-    if (isMusicPlaying) {
-      music.currentTime = parseFloat(musicCurrentTime);
-      music.play().catch((error) => console.log("Music playback failed", error));
-    }
+    music.currentTime = parseFloat(musicCurrentTime);
+    music.play().catch((error) => console.log("Music playback failed", error));
   }
-
-  document.addEventListener("click", function startMusic() {
-    if (music && !isMusicPlaying) {
-      music.play().catch((error) => console.log("Autoplay prevented", error));
-      localStorage.setItem("musicPlaying", "true");
-      document.removeEventListener("click", startMusic);
-    }
-  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
