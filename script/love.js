@@ -71,12 +71,13 @@ function init() {
   var pointsOrigin = [];
   var dr = mobile ? 0.5 : 0.1;
 
+  // Уменьшенные размеры
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 310 * koef, 19 * koef, 0, 0));
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 210 * koef, 11 * koef, 0, 0));
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 250 * koef, 15 * koef, 0, 0));
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 150 * koef, 9 * koef, 0, 0));
   for (var i = 0; i < Math.PI * 2; i += dr)
-    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 190 * koef, 11 * koef, 0, 0));
+    pointsOrigin.push(scaleAndTranslate(heartPosition(i), 90 * koef, 5 * koef, 0, 0));
 
   var heartPointsCount = pointsOrigin.length;
   var targetPoints = [];
