@@ -5,9 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>❤️</title>
     <link rel="stylesheet" href="styles/main.css">
-<div class="wallpaper"></div>
-    <div class="content">
-    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; /* Цвет фона страницы */
+        }
+
+        .bg_heart {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4081;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(211, 211, 211, 0.7); /* Светло-серый цвет с прозрачностью */
+            color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный текст */
+            padding: 10px 0;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace; /* Шрифт по желанию */
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта */
+        }
+    </style>
 </head>
 <body>
     <div class="bg_heart">
@@ -15,45 +62,49 @@
         <a href="love.html" class="next-button">Нажми)</a>
     </div>
 
+    <audio id="backgroundMusic" loop>
+        <source src="assets/blue.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script/main.js"></script>
-<script>
-    function setupMusic() {
-        const music = document.getElementById('backgroundMusic');
-        
-        const isMusicPlaying = localStorage.getItem('musicPlaying') === 'true';
-        const musicCurrentTime = localStorage.getItem('musicCurrentTime') || 0;
+    <script>
+        function setupMusic() {
+            const music = document.getElementById('backgroundMusic');
+            
+            const isMusicPlaying = localStorage.getItem('musicPlaying') === 'true';
+            const musicCurrentTime = localStorage.getItem('musicCurrentTime') || 0;
 
-        if (isMusicPlaying) {
-            music.currentTime = parseFloat(musicCurrentTime);
+            if (isMusicPlaying) {
+                music.currentTime = parseFloat(musicCurrentTime);
+            }
+
+            music.addEventListener('play', () => {
+                localStorage.setItem('musicPlaying', 'true');
+            });
+
+            music.addEventListener('pause', () => {
+                localStorage.setItem('musicPlaying', 'false');
+            });
+
+            setInterval(() => {
+                localStorage.setItem('musicCurrentTime', music.currentTime);
+            }, 1000);
+
+            document.addEventListener('click', function startMusic() {
+                music.play().catch(error => {
+                    console.log('Autoplay prevented', error);
+                });
+                document.removeEventListener('click', startMusic);
+            });
         }
 
-        music.addEventListener('play', () => {
-            localStorage.setItem('musicPlaying', 'true');
-        });
-
-        music.addEventListener('pause', () => {
-            localStorage.setItem('musicPlaying', 'false');
-        });
-
-        setInterval(() => {
-            localStorage.setItem('musicCurrentTime', music.currentTime);
-        }, 1000);
-
-        document.addEventListener('click', function startMusic() {
-            music.play().catch(error => {
-                console.log('Autoplay prevented', error);
-            });
-            document.removeEventListener('click', startMusic);
-        });
-    }
-
         document.addEventListener('DOMContentLoaded', setupMusic);
-</script>
+    </script>
 
-<audio id="backgroundMusic" loop>
-    <source src="assets/blue.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</script>
+    <div class="footer">
+        Сделано с любовью телегой @catfrik 💗
+    </div>
 </body>
 </html>
