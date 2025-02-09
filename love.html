@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>❤️</title>
   <link rel="stylesheet" href="styles/love.css">
+  <style>
+    .flowers-button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    .flowers-button:hover {
+      background-color: #e91e63;
+    }
+  </style>
 </head>
 <body>
   <canvas id="heart"></canvas>
@@ -13,6 +32,7 @@
     <source src="assets/blue.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+  <a href="flower.html" class="flowers-button">Flowers</a>
   <script src="script/love.js"></script>
 </body>
 </html>
